@@ -1,0 +1,8 @@
+/   {
+        leds {
+            compatible = "gpio-leds";
+            blinking_led: blinking_led {
+                gpios = <&gpioc 13 GPIO_ACTIVE_HIGH>;
+            };
+        };
+    };
