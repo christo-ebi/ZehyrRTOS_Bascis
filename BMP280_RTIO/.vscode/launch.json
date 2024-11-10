@@ -1,0 +1,35 @@
+{
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "Launch",
+            "device": "stm32_min_dev_blue",
+            "cwd": "${workspaceFolder}",
+            "executable": "build/zephyr/zephyr.elf",
+            "request": "launch",
+            "type": "cortex-debug",
+            "runToEntryPoint": "main",
+            "servertype": "openocd",
+            "configFiles": [
+            "${userHome}/zephyrproject/zephyr/boards/others/stm32_min_dev/support/openocd.cfg"
+            ],
+            "gdbPath": "${userHome}/zephyr-sdk-0.16.8/arm-zephyr-eabi/bin/arm-zephyr-eabi-gdb",
+
+            "preLaunchTask": "West Build"
+        },
+        {
+            "name": "Attach",
+            "device": "stm32_min_dev_blue",
+            "cwd": "${workspaceFolder}",
+            "executable": "build/zephyr/zephyr.elf",
+            "request": "attach",
+            "type": "cortex-debug",
+            "runToEntryPoint": "main",
+            "servertype": "openocd",
+            "configFiles": [
+            "${userHome}/zephyrproject/zephyr/boards/others/stm32_min_dev/support/openocd.cfg"
+            ],
+            "gdbPath": "${userHome}/zephyr-sdk-0.16.8/arm-zephyr-eabi/bin/arm-zephyr-eabi-gdb"
+        }
+    ]
+}
