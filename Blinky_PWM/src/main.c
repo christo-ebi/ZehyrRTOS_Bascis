@@ -19,6 +19,7 @@ int main(void)
 		return 0;
 	}
 	
+	//Set the pwm period and pulse.
 	ret = pwm_set_dt(&pwm_led, PERIOD, PULSE);
 
 	if (ret) {
@@ -30,5 +31,6 @@ int main(void)
 		printk("Inside Loop\n");
 		k_sleep(K_SECONDS(1U));
 	}
+
 	return 0;
 }
