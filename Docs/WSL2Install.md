@@ -1,3 +1,5 @@
+## WSL Installation Guide:
+
 Installation Instruction for WSL Windowns 11: (https://learn.microsoft.com/en-us/windows/wsl/install)
 
 Follow the same instructions given in the Documentation (Ubuntu): (https://docs.zephyrproject.org/latest/develop/getting_started/index.html)
