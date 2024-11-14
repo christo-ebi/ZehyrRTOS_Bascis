@@ -16,14 +16,14 @@ int main(void)
 	}
 
 	struct sensor_value Temp;
-    struct sensor_value Humidity;
+    //struct sensor_value Humidity;
     struct sensor_value Pressure;
 
 	while(1) {
 		if(!sensor_sample_fetch(dev))
 		{
 
-			ret = sensor_channel_get(dev, SENSOR_CHAN_AMBIENT_TEMP, &Pressure);
+			ret = sensor_channel_get(dev, SENSOR_CHAN_AMBIENT_TEMP, &Temp);
 			
 			if(!ret)
 			{
