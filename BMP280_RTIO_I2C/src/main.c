@@ -9,23 +9,26 @@ static const struct device *dev = DEVICE_DT_GET(DT_ALIAS(sensortmp));
 //Create RTIO IO DEV using this MACRO.
 SENSOR_DT_READ_IODEV(iodev, DT_NODELABEL(sensor1),
     { SENSOR_CHAN_AMBIENT_TEMP, 0 },
-    { SENSOR_CHAN_PRESS, 0 },
-	{ SENSOR_CHAN_HUMIDITY, 0 });
+    { SENSOR_CHAN_PRESS, 0 },);
+	//{ SENSOR_CHAN_HUMIDITY, 0 });
 
 RTIO_DEFINE(cntx,128,128);
 
 int main(void)
 {
+
+	k_msleep(1000);
+
 	int ret;
 	uint8_t buf[128];
 
 	uint32_t temp_fit = 0;
 	uint32_t press_fit = 0;
-	uint32_t humid_fit = 0;
+	//uint32_t humid_fit = 0;
 
 	struct sensor_q31_data temp_data = {0};
 	struct sensor_q31_data press_data = {0};
-	struct sensor_q31_data humid_data = {0};
+	//struct sensor_q31_data humid_data = {0};
 
 	const struct sensor_decoder_api *decoder;
 
@@ -37,9 +40,16 @@ int main(void)
 		printf("Device %s is not ready\n", dev->name);
 	}
 
-	while(1) {
-		ret = sensor_read(&iodev,&cntx,buf,128);
+	
 
+	while(1) {
+		temp_fit = 0;
+		press_fit = 0;
+		//uint32_t humid_fit = 0;
+
+	 
+		ret = sensor_read(&iodev,&cntx,buf,128);
+		
 		if(ret <0)
 		{
 			printf("Sensor Read Failed: %d \n", ret);
@@ -69,7 +79,7 @@ int main(void)
 
 		printk("Temp: %s%d.%d; Press: %s%d.%d;\n",
 		PRIq_arg(temp_data.readings[0].temperature, 6, temp_data.shift),
-		PRIq_arg(press_data.readings[0].pressure, 6, press_data.shift),);
+		PRIq_arg(press_data.readings[0].pressure, 6, press_data.shift));
 
 		/* 
 			
