@@ -1,0 +1,10 @@
+/   {
+		aliases {
+			dth11tmp = &tmp11;
+		};
+
+		tmp11:dht11 {
+			compatible = "aosong,dht";
+			dio-gpios = <&gpioc 0 GPIO_ACTIVE_LOW>;
+		};
+	};
